@@ -22,7 +22,9 @@ import org.eclipse.jdt.annotation.Nullable;
 
 /**
  * A Storage is the generic way to store key-value pairs in ESH. Each Storage
- * implementation can store its data differently, e.g in-memory or in-database.
+ * implementation can store its data differently, e.g. in-memory or in-database.
+ *
+ * @param <T> the type of values maintained by this Storage
  *
  * @author Thomas Eichstaedt-Engelen - Initial contribution
  * @author Kai Kreuzer - improved return values
@@ -41,7 +43,7 @@ public interface Storage<T> {
     T put(String key, @Nullable T value);
 
     /**
-     * Removes the specified mapping from this map.
+     * Removes the specified mapping from this Storage.
      *
      * @param key the mapping to remove
      * @return the removed value or null if no entry existed
@@ -50,7 +52,7 @@ public interface Storage<T> {
     T remove(String key);
 
     /**
-     * Check if the storage contains a key.
+     * Returns {@code true} if this Storage contains a mapping for the specified key.
      *
      * @param key the key
      * @return true if the storage contains the key, otherwise false
@@ -81,7 +83,7 @@ public interface Storage<T> {
     Collection<@Nullable T> getValues();
 
     /**
-     * Get all storage entries.
+     * Gets all storage entries.
      *
      * @return a stream of all storage entries
      */
